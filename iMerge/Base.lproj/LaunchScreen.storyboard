@@ -16,7 +16,58 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caH-Ot-IAL">
+                                <rect key="frame" x="149" y="45" width="303" height="157"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="157" id="NbT-Fg-EAJ"/>
+                                </constraints>
+                                <string key="text">iMerge: An app to merge two video files
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NbT-Fg-EAJ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="NbT-Fg-EAJ"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Shiyu Dong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPd-Hs-4FB">
+                                <rect key="frame" x="256" y="480" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="bPd-Hs-4FB" secondAttribute="bottom" constant="301" id="VYc-Wu-VCI"/>
+                            <constraint firstItem="caH-Ot-IAL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ZC5-oM-IlG"/>
+                            <constraint firstItem="caH-Ot-IAL" firstAttribute="centerX" secondItem="bPd-Hs-4FB" secondAttribute="centerX" id="prJ-BL-8If"/>
+                            <constraint firstItem="caH-Ot-IAL" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="46" id="yjS-Q7-izs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ZC5-oM-IlG"/>
+                                <exclude reference="prJ-BL-8If"/>
+                                <exclude reference="yjS-Q7-izs"/>
+                                <exclude reference="VYc-Wu-VCI"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="ZC5-oM-IlG"/>
+                                <include reference="prJ-BL-8If"/>
+                                <include reference="yjS-Q7-izs"/>
+                                <include reference="VYc-Wu-VCI"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
