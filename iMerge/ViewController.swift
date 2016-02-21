@@ -21,12 +21,17 @@ class ViewController: UIViewController {
     var pre_merged = false
     var exporter: AVAssetExportSession? = nil
     
-    //@IBOutlet var activityMonitor: UIActivityIndicatorView!
+    @IBOutlet var firstVideoText : UITextView!
+    @IBOutlet var secondVideoText : UITextView!
+
     
+    //@IBOutlet var activityMonitor: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        firstVideoText.text = "Empty"
+        secondVideoText.text = "Empty"
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,6 +44,7 @@ class ViewController: UIViewController {
             loadingAssetOne = true
             startMediaBrowserFromViewController(self, usingDelegate: self)
             pre_merged = false;
+            
         }
     }
     @IBAction func previewAssetOne(sender: AnyObject) {
@@ -83,6 +89,7 @@ class ViewController: UIViewController {
             loadingAssetOne = false
             startMediaBrowserFromViewController(self, usingDelegate: self)
             pre_merged = false
+            
         }
     }
     
@@ -246,6 +253,8 @@ class ViewController: UIViewController {
         secondAsset = nil
         pre_merged = false
         exporter = nil
+        firstVideoText.text = "Empty"
+        secondVideoText.text = "Empty"
     }
     
 
@@ -295,6 +304,10 @@ class ViewController: UIViewController {
         }
         return instruction
     }
+    
+    func refreshUI() {
+
+    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate {
@@ -307,9 +320,11 @@ extension ViewController: UIImagePickerControllerDelegate {
             if loadingAssetOne {
                 message = "Video one loaded"
                 firstAsset = avAsset
+                firstVideoText.text = "Loaded"
             } else {
                 message = "Video two loaded"
                 secondAsset = avAsset
+                secondVideoText.text = "Loaded"
             }
             let alert = UIAlertController(title: "Asset Loaded", message: message, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))

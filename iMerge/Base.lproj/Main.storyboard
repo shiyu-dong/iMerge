@@ -35,8 +35,8 @@
                                     <action selector="loadAssetTwo:" destination="BYZ-38-t0r" eventType="touchDown" id="Gg2-uN-kNv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOu-LA-GK1">
-                                <rect key="frame" x="217" y="100" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOu-LA-GK1">
+                                <rect key="frame" x="255" y="100" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Qh2-uq-qhO"/>
                                 </constraints>
@@ -45,8 +45,8 @@
                                     <action selector="previewAssetOne:" destination="BYZ-38-t0r" eventType="touchDown" id="0r7-7U-iNa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xef-Lx-DIA">
-                                <rect key="frame" x="227" y="415" width="100" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xef-Lx-DIA">
+                                <rect key="frame" x="265" y="415" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="a2W-yQ-JEV"/>
                                 </constraints>
@@ -62,13 +62,25 @@
                                     <action selector="merge:" destination="BYZ-38-t0r" eventType="touchDown" id="yPf-Cm-CDz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mea-Yf-xwA">
-                                <rect key="frame" x="217" y="266" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mea-Yf-xwA">
+                                <rect key="frame" x="255" y="266" width="120" height="30"/>
                                 <state key="normal" title="Preview Video 2"/>
                                 <connections>
                                     <action selector="previewAssetTwo:" destination="BYZ-38-t0r" eventType="touchDown" id="sqI-ur-TvI"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DRC-yT-w9O">
+                                <rect key="frame" x="20" y="133" width="113" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Kp-DyN">
+                                <rect key="frame" x="20" y="299" width="113" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -90,6 +102,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="iMerge" id="0Ll-uo-ZUV"/>
+                    <connections>
+                        <outlet property="firstVideoText" destination="DRC-yT-w9O" id="hFf-bF-xeY"/>
+                        <outlet property="secondVideoText" destination="UgW-Kp-DyN" id="EG5-AD-3WA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
