@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--iMerge-->
@@ -19,113 +18,299 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dN0-Su-y9m">
-                                <rect key="frame" x="20" y="100" width="100" height="30"/>
+                                <rect key="frame" x="225" y="110" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.62983387411902492" green="0.99490590286701941" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="LJ0-hp-TUN"/>
-                                </constraints>
                                 <state key="normal" title="Load Video1"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="100" width="100" height="18"/>
+                                </variation>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="77" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="77" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="77" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="115" width="150" height="30"/>
+                                </variation>
                                 <connections>
-                                    <action selector="loadAssetOne:" destination="BYZ-38-t0r" eventType="touchDown" id="RQO-3v-BlB"/>
+                                    <action selector="LoadVideo1:" destination="BYZ-38-t0r" eventType="touchDown" id="7Cm-xo-dzP"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRC-yT-w9O">
+                                <rect key="frame" x="225" y="72" width="150" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="6y5-ve-MWv"/>
+                                    <constraint firstAttribute="height" constant="30" id="nX2-GX-rds"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="121" width="100" height="0.0"/>
+                                </variation>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="115" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="115" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="133" width="100" height="50"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="115" width="100" height="0.0"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="77" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="133" width="100" height="50"/>
+                                </variation>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOu-LA-GK1">
+                                <rect key="frame" x="225" y="148" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.61960784313725492" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Preview Video1"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="200" y="94" width="120" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="167" y="77" width="120" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="200" y="100" width="120" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="167" y="77" width="120" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="100" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="153" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="200" y="100" width="120" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="previewVideo1:" destination="BYZ-38-t0r" eventType="touchDown" id="mnb-EF-R9a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52d-fM-m7K">
-                                <rect key="frame" x="20" y="266" width="100" height="30"/>
+                                <rect key="frame" x="225" y="306" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.61960784313725492" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Load Video2"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="198" width="100" height="4"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="207" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="260" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="177" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="272" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="260" width="100" height="30"/>
+                                </variation>
                                 <connections>
-                                    <action selector="loadAssetTwo:" destination="BYZ-38-t0r" eventType="touchDown" id="Gg2-uN-kNv"/>
+                                    <action selector="LoadVideo2:" destination="BYZ-38-t0r" eventType="touchDown" id="cnZ-d4-WwY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOu-LA-GK1">
-                                <rect key="frame" x="200" y="100" width="120" height="30"/>
-                                <color key="backgroundColor" red="0.61960784313725492" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Preview Video1"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Kp-DyN">
+                                <rect key="frame" x="225" y="266" width="150" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="s3m-A9-cC5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="205" width="100" height="0.0"/>
+                                </variation>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="245" width="100" height="230"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="245" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="293" width="100" height="50"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="215" width="100" height="0.0"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="234" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="293" width="100" height="50"/>
+                                </variation>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mea-Yf-xwA">
+                                <rect key="frame" x="225" y="344" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.61960784310000006" green="0.98431372549999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Preview Video2"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="200" y="178" width="120" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="167" y="207" width="120" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="200" y="260" width="120" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="167" y="177" width="120" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="310" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="200" y="260" width="120" height="30"/>
+                                </variation>
                                 <connections>
-                                    <action selector="previewAssetOne:" destination="BYZ-38-t0r" eventType="touchDown" id="0r7-7U-iNa"/>
+                                    <action selector="previewVideo2:" destination="BYZ-38-t0r" eventType="touchDown" id="aWI-IM-cOb"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHA-2Q-Tic">
+                                <rect key="frame" x="225" y="486" width="150" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7ep-mt-8K9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="303" width="100" height="0.0"/>
+                                </variation>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="575" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="375" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="453" width="100" height="50"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="20" y="330" width="100" height="50"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="401" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="453" width="100" height="50"/>
+                                </variation>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-XV-a9y">
+                                <rect key="frame" x="225" y="562" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.61960784310000006" green="0.98431372549999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Merge"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="282" width="100" height="18"/>
+                                </variation>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="537" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="337" width="100" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="420" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="277" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="477" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="420" width="100" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="merge:" destination="BYZ-38-t0r" eventType="touchDown" id="CDN-jg-hhD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xef-Lx-DIA">
-                                <rect key="frame" x="210" y="450" width="100" height="30"/>
+                                <rect key="frame" x="225" y="524" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.61960784310000006" green="0.98431372549999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="oHS-7e-AbT"/>
-                                </constraints>
                                 <state key="normal" title="Preview"/>
+                                <variation key="heightClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="210" y="276" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="167" y="537" width="120" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="167" y="337" width="120" height="30"/>
+                                </variation>
+                                <variation key="widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="210" y="420" width="100" height="30"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="167" y="137" width="120" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="439" width="150" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="210" y="420" width="100" height="30"/>
+                                </variation>
                                 <connections>
-                                    <action selector="preview" destination="BYZ-38-t0r" eventType="touchDown" id="yNE-7J-XAS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mea-Yf-xwA">
-                                <rect key="frame" x="200" y="266" width="120" height="30"/>
-                                <color key="backgroundColor" red="0.61960784310000006" green="0.98431372549999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Preview Video2"/>
-                                <connections>
-                                    <action selector="previewAssetTwo:" destination="BYZ-38-t0r" eventType="touchDown" id="sqI-ur-TvI"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRC-yT-w9O">
-                                <rect key="frame" x="20" y="133" width="100" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="CYc-TF-bZ1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Kp-DyN">
-                                <rect key="frame" x="20" y="299" width="100" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="HNW-0J-1Fh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-XV-a9y">
-                                <rect key="frame" x="20" y="450" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.61960784310000006" green="0.98431372549999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Merge"/>
-                                <connections>
-                                    <action selector="merge:" destination="BYZ-38-t0r" eventType="touchDown" id="yPf-Cm-CDz"/>
+                                    <action selector="preview:" destination="BYZ-38-t0r" eventType="touchDown" id="aL8-J3-1Yd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UgW-Kp-DyN" firstAttribute="top" secondItem="52d-fM-m7K" secondAttribute="bottom" constant="3" id="1P4-4B-ILC"/>
-                            <constraint firstItem="dN0-Su-y9m" firstAttribute="leading" secondItem="DRC-yT-w9O" secondAttribute="leading" id="22D-Vd-p6B"/>
-                            <constraint firstItem="dN0-Su-y9m" firstAttribute="baseline" secondItem="EOu-LA-GK1" secondAttribute="baseline" id="2zP-Za-oH0"/>
-                            <constraint firstItem="xef-Lx-DIA" firstAttribute="baseline" secondItem="VUC-XV-a9y" secondAttribute="baseline" id="Eu3-0L-dmT"/>
-                            <constraint firstItem="xef-Lx-DIA" firstAttribute="leading" secondItem="VUC-XV-a9y" secondAttribute="trailing" constant="90" id="EzK-sN-xFr"/>
-                            <constraint firstItem="VUC-XV-a9y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JH7-6l-aR7"/>
-                            <constraint firstItem="EOu-LA-GK1" firstAttribute="leading" secondItem="dN0-Su-y9m" secondAttribute="trailing" constant="80" id="KYD-16-veI"/>
-                            <constraint firstItem="EOu-LA-GK1" firstAttribute="leading" secondItem="Mea-Yf-xwA" secondAttribute="leading" id="LwN-OR-H8D"/>
-                            <constraint firstItem="52d-fM-m7K" firstAttribute="top" secondItem="DRC-yT-w9O" secondAttribute="bottom" constant="83" id="TQv-lr-oke"/>
-                            <constraint firstItem="dN0-Su-y9m" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="VtH-r1-V42"/>
-                            <constraint firstItem="VUC-XV-a9y" firstAttribute="trailing" secondItem="UgW-Kp-DyN" secondAttribute="trailing" id="Wcu-KV-UGg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VUC-XV-a9y" secondAttribute="bottom" constant="120" id="bQt-OJ-NYs"/>
-                            <constraint firstItem="UgW-Kp-DyN" firstAttribute="leading" secondItem="VUC-XV-a9y" secondAttribute="leading" id="cvM-0E-2HE"/>
-                            <constraint firstItem="Mea-Yf-xwA" firstAttribute="baseline" secondItem="52d-fM-m7K" secondAttribute="baseline" id="f6u-OY-PEM"/>
-                            <constraint firstItem="EOu-LA-GK1" firstAttribute="trailing" secondItem="Mea-Yf-xwA" secondAttribute="trailing" id="foK-cS-sXJ"/>
-                            <constraint firstItem="Mea-Yf-xwA" firstAttribute="centerX" secondItem="xef-Lx-DIA" secondAttribute="centerX" id="ivY-0a-SMh"/>
-                            <constraint firstItem="DRC-yT-w9O" firstAttribute="trailing" secondItem="dN0-Su-y9m" secondAttribute="trailing" id="kmr-R1-koX"/>
-                            <constraint firstItem="UgW-Kp-DyN" firstAttribute="trailing" secondItem="52d-fM-m7K" secondAttribute="trailing" id="nj5-Oe-P3a"/>
-                            <constraint firstItem="52d-fM-m7K" firstAttribute="leading" secondItem="UgW-Kp-DyN" secondAttribute="leading" id="q4Z-yz-UKE"/>
-                            <constraint firstItem="52d-fM-m7K" firstAttribute="leading" secondItem="DRC-yT-w9O" secondAttribute="leading" id="qRc-3n-LOh"/>
-                            <constraint firstItem="52d-fM-m7K" firstAttribute="trailing" secondItem="DRC-yT-w9O" secondAttribute="trailing" id="tHl-zi-jk6"/>
-                            <constraint firstItem="DRC-yT-w9O" firstAttribute="top" secondItem="dN0-Su-y9m" secondAttribute="bottom" constant="3" id="vfb-AK-h0c"/>
+                            <constraint firstItem="UgW-Kp-DyN" firstAttribute="top" secondItem="EOu-LA-GK1" secondAttribute="bottom" constant="88" id="1Wl-C1-bhp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VUC-XV-a9y" secondAttribute="bottom" constant="8" symbolic="YES" id="2xl-5i-MWh"/>
+                            <constraint firstItem="DRC-yT-w9O" firstAttribute="trailing" secondItem="dN0-Su-y9m" secondAttribute="trailing" id="3ma-dk-ocB"/>
+                            <constraint firstItem="52d-fM-m7K" firstAttribute="top" secondItem="UgW-Kp-DyN" secondAttribute="bottom" constant="10" id="CHE-9d-NfL"/>
+                            <constraint firstItem="EOu-LA-GK1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FHo-ML-OyP"/>
+                            <constraint firstItem="EOu-LA-GK1" firstAttribute="leading" secondItem="UgW-Kp-DyN" secondAttribute="leading" id="HQj-hz-Jqz"/>
+                            <constraint firstItem="Mea-Yf-xwA" firstAttribute="leading" secondItem="NHA-2Q-Tic" secondAttribute="leading" id="MPu-SZ-C8C"/>
+                            <constraint firstItem="DRC-yT-w9O" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="W66-oD-Szq"/>
+                            <constraint firstItem="UgW-Kp-DyN" firstAttribute="leading" secondItem="52d-fM-m7K" secondAttribute="leading" id="dxL-dh-H37"/>
+                            <constraint firstItem="VUC-XV-a9y" firstAttribute="trailing" secondItem="xef-Lx-DIA" secondAttribute="trailing" id="eBy-13-VHA"/>
+                            <constraint firstItem="dN0-Su-y9m" firstAttribute="leading" secondItem="EOu-LA-GK1" secondAttribute="leading" id="fMo-82-Xuk"/>
+                            <constraint firstItem="52d-fM-m7K" firstAttribute="trailing" secondItem="UgW-Kp-DyN" secondAttribute="trailing" id="gWE-Kl-Dv6"/>
+                            <constraint firstItem="EOu-LA-GK1" firstAttribute="top" secondItem="dN0-Su-y9m" secondAttribute="bottom" constant="8" symbolic="YES" id="ggx-Fc-RZR"/>
+                            <constraint firstItem="VUC-XV-a9y" firstAttribute="top" secondItem="xef-Lx-DIA" secondAttribute="bottom" constant="8" symbolic="YES" id="gh8-ny-UcW"/>
+                            <constraint firstItem="Mea-Yf-xwA" firstAttribute="trailing" secondItem="NHA-2Q-Tic" secondAttribute="trailing" id="hmE-8u-VsO"/>
+                            <constraint firstItem="dN0-Su-y9m" firstAttribute="leading" secondItem="DRC-yT-w9O" secondAttribute="leading" id="ja7-ih-o7H"/>
+                            <constraint firstItem="Mea-Yf-xwA" firstAttribute="top" secondItem="52d-fM-m7K" secondAttribute="bottom" constant="8" symbolic="YES" id="lkM-EA-AmS"/>
+                            <constraint firstItem="xef-Lx-DIA" firstAttribute="trailing" secondItem="NHA-2Q-Tic" secondAttribute="trailing" id="mTY-GT-QoP"/>
+                            <constraint firstItem="VUC-XV-a9y" firstAttribute="leading" secondItem="xef-Lx-DIA" secondAttribute="leading" id="qfC-bD-FhR"/>
+                            <constraint firstItem="dN0-Su-y9m" firstAttribute="top" secondItem="DRC-yT-w9O" secondAttribute="bottom" constant="8" symbolic="YES" id="rHp-8U-qg7"/>
+                            <constraint firstItem="xef-Lx-DIA" firstAttribute="top" secondItem="NHA-2Q-Tic" secondAttribute="bottom" constant="8" symbolic="YES" id="t57-O3-ft4"/>
+                            <constraint firstItem="xef-Lx-DIA" firstAttribute="leading" secondItem="NHA-2Q-Tic" secondAttribute="leading" id="tlP-5i-k8h"/>
+                            <constraint firstItem="52d-fM-m7K" firstAttribute="leading" secondItem="Mea-Yf-xwA" secondAttribute="leading" id="tyB-hU-xhS"/>
+                            <constraint firstItem="EOu-LA-GK1" firstAttribute="trailing" secondItem="UgW-Kp-DyN" secondAttribute="trailing" id="vrW-XM-KPG"/>
+                            <constraint firstItem="dN0-Su-y9m" firstAttribute="trailing" secondItem="EOu-LA-GK1" secondAttribute="trailing" id="xrs-s0-TmC"/>
+                            <constraint firstItem="Mea-Yf-xwA" firstAttribute="trailing" secondItem="52d-fM-m7K" secondAttribute="trailing" id="yeZ-E1-jWd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="iMerge" id="0Ll-uo-ZUV"/>
                     <connections>
                         <outlet property="firstVideoText" destination="DRC-yT-w9O" id="hFf-bF-xeY"/>
+                        <outlet property="mergeText" destination="NHA-2Q-Tic" id="wpm-dw-fEb"/>
                         <outlet property="secondVideoText" destination="UgW-Kp-DyN" id="EG5-AD-3WA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="670"/>
+            <point key="canvasLocation" x="1306" y="666"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bcq-Ye-SIr">
