@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--iMerge-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iMerge" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,35 +17,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dN0-Su-y9m">
-                                <rect key="frame" x="182" y="157" width="88" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dN0-Su-y9m">
+                                <rect key="frame" x="257" y="175" width="88" height="30"/>
                                 <state key="normal" title="Load Video 1"/>
                                 <connections>
                                     <action selector="loadAssetOne:" destination="BYZ-38-t0r" eventType="touchDown" id="RQO-3v-BlB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xef-Lx-DIA">
-                                <rect key="frame" x="193" y="309" width="54" height="30"/>
-                                <state key="normal" title="Preview"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-XV-a9y">
-                                <rect key="frame" x="198" y="400" width="44" height="30"/>
-                                <state key="normal" title="Merge"/>
-                                <connections>
-                                    <action selector="merge:" destination="BYZ-38-t0r" eventType="touchDown" id="yPf-Cm-CDz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52d-fM-m7K">
-                                <rect key="frame" x="180" y="221" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52d-fM-m7K">
+                                <rect key="frame" x="255" y="261" width="90" height="30"/>
                                 <state key="normal" title="Load Video 2"/>
                                 <connections>
                                     <action selector="loadAssetTwo:" destination="BYZ-38-t0r" eventType="touchDown" id="Gg2-uN-kNv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-XV-a9y">
+                                <rect key="frame" x="278" y="423" width="44" height="30"/>
+                                <state key="normal" title="Merge"/>
+                                <connections>
+                                    <action selector="merge:" destination="BYZ-38-t0r" eventType="touchDown" id="yPf-Cm-CDz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xef-Lx-DIA">
+                                <rect key="frame" x="273" y="349" width="54" height="30"/>
+                                <state key="normal" title="Preview"/>
+                                <connections>
+                                    <action selector="preview" destination="BYZ-38-t0r" eventType="touchDown" id="yNE-7J-XAS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dN0-Su-y9m" firstAttribute="leading" secondItem="52d-fM-m7K" secondAttribute="leading" id="BXS-lK-zNL"/>
+                            <constraint firstItem="xef-Lx-DIA" firstAttribute="top" secondItem="52d-fM-m7K" secondAttribute="bottom" constant="31" id="Bxw-Jz-g28"/>
+                            <constraint firstItem="VUC-XV-a9y" firstAttribute="centerX" secondItem="xef-Lx-DIA" secondAttribute="centerX" id="Huk-hN-KdO"/>
+                            <constraint firstItem="dN0-Su-y9m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="224" id="MD6-NI-8cA"/>
+                            <constraint firstItem="52d-fM-m7K" firstAttribute="top" secondItem="dN0-Su-y9m" secondAttribute="bottom" constant="27" id="kGb-1G-AD6"/>
+                            <constraint firstItem="VUC-XV-a9y" firstAttribute="top" secondItem="xef-Lx-DIA" secondAttribute="bottom" constant="32" id="kSk-15-kYz"/>
+                            <constraint firstItem="52d-fM-m7K" firstAttribute="centerX" secondItem="xef-Lx-DIA" secondAttribute="centerX" id="pxG-2O-rfs"/>
+                            <constraint firstItem="dN0-Su-y9m" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="136" id="tqp-cx-Eys"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0Ll-uo-ZUV"/>
+                    <navigationItem key="navigationItem" title="iMerge" id="0Ll-uo-ZUV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var secondAsset: AVAsset?
     var loadingAssetOne = false
     
-    @IBOutlet var activityMonitor: UIActivityIndicatorView!
+    //@IBOutlet var activityMonitor: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
@@ -30,59 +30,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func savedPhotosAvailable() -> Bool {
-        if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) == false {
-            let alert = UIAlertController(title: "Not Available", message: "No Saved Album found", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-            presentViewController(alert, animated: true, completion: nil)
-            return false
-        }
-        return true
-    }
-    
-    func startMediaBrowserFromViewController(viewController: UIViewController!, usingDelegate delegate : protocol<UINavigationControllerDelegate, UIImagePickerControllerDelegate>!) -> Bool {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) == false {
-            return false
-        }
-        
-        let mediaUI = UIImagePickerController()
-        mediaUI.sourceType = .SavedPhotosAlbum
-        mediaUI.mediaTypes = [kUTTypeMovie as String]
-        mediaUI.allowsEditing = true
-        mediaUI.delegate = delegate
-        presentViewController(mediaUI, animated: true, completion: nil)
-        return true
-    }
-    
-    func exportDidFinish(session: AVAssetExportSession) {
-        if session.status == AVAssetExportSessionStatus.Completed {
-            let outputURL = session.outputURL
-            let library = ALAssetsLibrary()
-            if library.videoAtPathIsCompatibleWithSavedPhotosAlbum(outputURL) {
-                library.writeVideoAtPathToSavedPhotosAlbum(outputURL,
-                    completionBlock: { (assetURL:NSURL!, error:NSError!) -> Void in
-                        var title = ""
-                        var message = ""
-                        if error != nil {
-                            title = "Error"
-                            message = "Failed to save video"
-                        } else {
-                            title = "Success"
-                            message = "Video saved"
-                        }
-                        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                })
-            }
-        }
-        
-        firstAsset = nil
-        secondAsset = nil
-        //audioAsset = nil
-    }
-    
     @IBAction func loadAssetOne(sender: AnyObject) {
         if savedPhotosAvailable() {
             loadingAssetOne = true
@@ -90,6 +37,13 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func preview() {
+        if (firstAsset == nil || secondAsset == nil) {
+            let alert = UIAlertController(title: "Not Available", message: "Must load two videos first before previewing the merged one", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
     @IBAction func loadAssetTwo(sender: AnyObject) {
         if savedPhotosAvailable() {
@@ -98,56 +52,13 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    func orientationFromTransform(transform: CGAffineTransform) -> (orientation: UIImageOrientation, isPortrait: Bool) {
-        var assetOrientation = UIImageOrientation.Up
-        var isPortrait = false
-        if transform.a == 0 && transform.b == 1.0 && transform.c == -1.0 && transform.d == 0 {
-            assetOrientation = .Right
-            isPortrait = true
-        } else if transform.a == 0 && transform.b == -1.0 && transform.c == 1.0 && transform.d == 0 {
-            assetOrientation = .Left
-            isPortrait = true
-        } else if transform.a == 1.0 && transform.b == 0 && transform.c == 0 && transform.d == 1.0 {
-            assetOrientation = .Up
-        } else if transform.a == -1.0 && transform.b == 0 && transform.c == 0 && transform.d == -1.0 {
-            assetOrientation = .Down
-        }
-        return (assetOrientation, isPortrait)
-    }
-    
-    func videoCompositionInstructionForTrack(track: AVCompositionTrack, asset: AVAsset) -> AVMutableVideoCompositionLayerInstruction {
-        let instruction = AVMutableVideoCompositionLayerInstruction(assetTrack: track)
-        let assetTrack = asset.tracksWithMediaType(AVMediaTypeVideo)[0]
-        
-        let transform = assetTrack.preferredTransform
-        let assetInfo = orientationFromTransform(transform)
-        
-        var scaleToFitRatio = UIScreen.mainScreen().bounds.width / assetTrack.naturalSize.width
-        if assetInfo.isPortrait {
-            scaleToFitRatio = UIScreen.mainScreen().bounds.width / assetTrack.naturalSize.height
-            let scaleFactor = CGAffineTransformMakeScale(scaleToFitRatio, scaleToFitRatio)
-            instruction.setTransform(CGAffineTransformConcat(assetTrack.preferredTransform, scaleFactor),
-                atTime: kCMTimeZero)
-        } else {
-            let scaleFactor = CGAffineTransformMakeScale(scaleToFitRatio, scaleToFitRatio)
-            var concat = CGAffineTransformConcat(CGAffineTransformConcat(assetTrack.preferredTransform, scaleFactor), CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.width / 2))
-            if assetInfo.orientation == .Down {
-                let fixUpsideDown = CGAffineTransformMakeRotation(CGFloat(M_PI))
-                let windowBounds = UIScreen.mainScreen().bounds
-                let yFix = assetTrack.naturalSize.height + windowBounds.height
-                let centerFix = CGAffineTransformMakeTranslation(assetTrack.naturalSize.width, yFix)
-                concat = CGAffineTransformConcat(CGAffineTransformConcat(fixUpsideDown, centerFix), scaleFactor)
-            }
-            instruction.setTransform(concat, atTime: kCMTimeZero)
-        }
-        
-        return instruction
-    }
-    
-    
     @IBAction func merge(sender: AnyObject) {
-        if let firstAsset = firstAsset, secondAsset = secondAsset {
+        if (firstAsset == nil || secondAsset == nil) {
+            let alert = UIAlertController(title: "Error", message: "Must load two videos first before merging", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        else if let firstAsset = firstAsset, secondAsset = secondAsset {
             
             // create AVMutableComposition object. This object will hold your AVMutableCompositionTrack instances.
             let mixComposition = AVMutableComposition()
@@ -210,14 +121,117 @@ class ViewController: UIViewController {
             
             // perform the export
             exporter?.exportAsynchronouslyWithCompletionHandler({ () -> Void in
-                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.self.exportDidFinish(exporter!)
                 })
-                
             })
         }
     }
+    
+    func savedPhotosAvailable() -> Bool {
+        if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) == false {
+            let alert = UIAlertController(title: "Not Available", message: "No Saved Album found", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
+    func startMediaBrowserFromViewController(viewController: UIViewController!, usingDelegate delegate : protocol<UINavigationControllerDelegate, UIImagePickerControllerDelegate>!) -> Bool {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) == false {
+            return false
+        }
+        
+        let mediaUI = UIImagePickerController()
+        mediaUI.sourceType = .SavedPhotosAlbum
+        mediaUI.mediaTypes = [kUTTypeMovie as String]
+        mediaUI.allowsEditing = true
+        mediaUI.delegate = delegate
+        presentViewController(mediaUI, animated: true, completion: nil)
+        return true
+    }
+    
+    func exportDidFinish(session: AVAssetExportSession) {
+        if session.status == AVAssetExportSessionStatus.Completed {
+            let outputURL = session.outputURL
+            let library = ALAssetsLibrary()
+            if library.videoAtPathIsCompatibleWithSavedPhotosAlbum(outputURL) {
+                library.writeVideoAtPathToSavedPhotosAlbum(outputURL,
+                    completionBlock: { (assetURL:NSURL!, error:NSError!) -> Void in
+                        var title = ""
+                        var message = ""
+                        if error != nil {
+                            title = "Error"
+                            message = "Failed to save video"
+                        } else {
+                            title = "Success"
+                            message = "Video saved"
+                        }
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                })
+            }
+        }
+        
+        firstAsset = nil
+        secondAsset = nil
+        //audioAsset = nil
+    }
+    
+
+    
+    
+    func orientationFromTransform(transform: CGAffineTransform) -> (orientation: UIImageOrientation, isPortrait: Bool) {
+        var assetOrientation = UIImageOrientation.Up
+        var isPortrait = false
+        if transform.a == 0 && transform.b == 1.0 && transform.c == -1.0 && transform.d == 0 {
+            assetOrientation = .Right
+            isPortrait = true
+        } else if transform.a == 0 && transform.b == -1.0 && transform.c == 1.0 && transform.d == 0 {
+            assetOrientation = .Left
+            isPortrait = true
+        } else if transform.a == 1.0 && transform.b == 0 && transform.c == 0 && transform.d == 1.0 {
+            assetOrientation = .Up
+        } else if transform.a == -1.0 && transform.b == 0 && transform.c == 0 && transform.d == -1.0 {
+            assetOrientation = .Down
+        }
+        return (assetOrientation, isPortrait)
+    }
+    
+    func videoCompositionInstructionForTrack(track: AVCompositionTrack, asset: AVAsset) -> AVMutableVideoCompositionLayerInstruction {
+        let instruction = AVMutableVideoCompositionLayerInstruction(assetTrack: track)
+        let assetTrack = asset.tracksWithMediaType(AVMediaTypeVideo)[0]
+        
+        let transform = assetTrack.preferredTransform
+        let assetInfo = orientationFromTransform(transform)
+        
+        var scaleToFitRatio = UIScreen.mainScreen().bounds.width / assetTrack.naturalSize.width
+        if assetInfo.isPortrait {
+            scaleToFitRatio = UIScreen.mainScreen().bounds.width / assetTrack.naturalSize.height
+            let scaleFactor = CGAffineTransformMakeScale(scaleToFitRatio, scaleToFitRatio)
+            instruction.setTransform(CGAffineTransformConcat(assetTrack.preferredTransform, scaleFactor),
+                atTime: kCMTimeZero)
+        } else {
+            let scaleFactor = CGAffineTransformMakeScale(scaleToFitRatio, scaleToFitRatio)
+            var concat = CGAffineTransformConcat(CGAffineTransformConcat(assetTrack.preferredTransform, scaleFactor), CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.width / 2))
+            if assetInfo.orientation == .Down {
+                let fixUpsideDown = CGAffineTransformMakeRotation(CGFloat(M_PI))
+                let windowBounds = UIScreen.mainScreen().bounds
+                let yFix = assetTrack.naturalSize.height + windowBounds.height
+                let centerFix = CGAffineTransformMakeTranslation(assetTrack.naturalSize.width, yFix)
+                concat = CGAffineTransformConcat(CGAffineTransformConcat(fixUpsideDown, centerFix), scaleFactor)
+            }
+            instruction.setTransform(concat, atTime: kCMTimeZero)
+        }
+        
+        return instruction
+    }
+    
+    
+
     
 }
 
