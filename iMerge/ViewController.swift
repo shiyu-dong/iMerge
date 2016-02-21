@@ -11,11 +11,15 @@ import MobileCoreServices
 import AssetsLibrary
 import MediaPlayer
 import CoreMedia
+import AVKit
+import AVFoundation
 
 class ViewController: UIViewController {
     var firstAsset: AVAsset?
     var secondAsset: AVAsset?
     var loadingAssetOne = false
+    var pre_merged = false
+    var exporter: AVAssetExportSession? = nil
     
     //@IBOutlet var activityMonitor: UIActivityIndicatorView!
     
@@ -34,27 +38,68 @@ class ViewController: UIViewController {
         if savedPhotosAvailable() {
             loadingAssetOne = true
             startMediaBrowserFromViewController(self, usingDelegate: self)
+            pre_merged = false;
         }
     }
-    
-    @IBAction func preview() {
-        if (firstAsset == nil || secondAsset == nil) {
-            let alert = UIAlertController(title: "Not Available", message: "Must load two videos first before previewing the merged one", preferredStyle: .Alert)
+    @IBAction func previewAssetOne(sender: AnyObject) {
+        if (firstAsset == nil) {
+            let alert = UIAlertController(title: "Error", message: "Video 1 not loaded", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         }
+        else {
+            let item = AVPlayerItem(asset: firstAsset!)
+            let player = AVPlayer(playerItem: item)
+            let playerController = AVPlayerViewController()
+            
+            playerController.player = player
+            presentViewController(playerController, animated: true) { () -> Void in
+                player.play()
+            }
+        }
     }
+    @IBAction func previewAssetTwo(sender: AnyObject) {
+        if (secondAsset == nil) {
+            let alert = UIAlertController(title: "Error", message: "Video 2 not loaded", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        else {
+            let item = AVPlayerItem(asset: secondAsset!)
+            let player = AVPlayer(playerItem: item)
+            let playerController = AVPlayerViewController()
+            
+            playerController.player = player
+            presentViewController(playerController, animated: true) { () -> Void in
+                player.play()
+            }
+        }
+    }
+    
+
     
     @IBAction func loadAssetTwo(sender: AnyObject) {
         if savedPhotosAvailable() {
             loadingAssetOne = false
             startMediaBrowserFromViewController(self, usingDelegate: self)
+            pre_merged = false
         }
     }
     
-    @IBAction func merge(sender: AnyObject) {
+    @IBAction func preview() {
+        pre_merge(true);
+    }
+    
+    func pre_merge(is_for_preview: Bool) {
         if (firstAsset == nil || secondAsset == nil) {
-            let alert = UIAlertController(title: "Error", message: "Must load two videos first before merging", preferredStyle: .Alert)
+            var err_msg: String
+            if (is_for_preview) {
+                err_msg = "previewing"
+            }
+            else {
+                err_msg = "merging"
+            }
+            let alert = UIAlertController(title: "Error", message: "Must load two videos first before \(err_msg)", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         }
@@ -113,21 +158,43 @@ class ViewController: UIViewController {
             let url = NSURL(fileURLWithPath: savePath)
             
             // create exporter
-            let exporter = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)
+            //let exporter = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)
+            exporter = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)
             exporter?.outputURL = url
             exporter?.shouldOptimizeForNetworkUse = true
             exporter!.outputFileType = AVFileTypeQuickTimeMovie
             exporter!.videoComposition = mainComposition
             
+            // preview video
+            if (is_for_preview) {
+                let item = AVPlayerItem(asset: mixComposition)
+                item.videoComposition = mainComposition
+                let player = AVPlayer(playerItem: item)
+                let playerController = AVPlayerViewController()
+                
+                playerController.player = player
+                presentViewController(playerController, animated: true) { () -> Void in
+                    player.play()
+                }
+            }
+            pre_merged = true
+        }
+    }
+    
+    @IBAction func merge(sender: AnyObject) {
+        if (pre_merged == false) {
+            pre_merge(false)
+        }
+        if (exporter != nil) {
             // perform the export
             exporter?.exportAsynchronouslyWithCompletionHandler({ () -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.self.exportDidFinish(exporter!)
+                    self.self.exportDidFinish(self.exporter!)
                 })
             })
         }
     }
-    
+
     func savedPhotosAvailable() -> Bool {
         if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) == false {
             let alert = UIAlertController(title: "Not Available", message: "No Saved Album found", preferredStyle: .Alert)
@@ -175,10 +242,10 @@ class ViewController: UIViewController {
                 })
             }
         }
-        
         firstAsset = nil
         secondAsset = nil
-        //audioAsset = nil
+        pre_merged = false
+        exporter = nil
     }
     
 
@@ -226,13 +293,8 @@ class ViewController: UIViewController {
             }
             instruction.setTransform(concat, atTime: kCMTimeZero)
         }
-        
         return instruction
     }
-    
-    
-
-    
 }
 
 extension ViewController: UIImagePickerControllerDelegate {
