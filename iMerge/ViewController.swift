@@ -197,7 +197,7 @@ class ViewController: UIViewController {
             dateFormatter.dateStyle = .LongStyle
             dateFormatter.timeStyle = .ShortStyle
             let date = dateFormatter.stringFromDate(NSDate())
-            let savePath = "\(directory)/mergedVideo-\(date).mp4"
+            let savePath = "\(directory)/mergedVideo-\(date).mov"
             let url = NSURL(fileURLWithPath: savePath)
 
             // update exporter
@@ -238,7 +238,7 @@ class ViewController: UIViewController {
             instruction.setTransform(CGAffineTransformConcat(assetTrack.preferredTransform, scaleFactor),atTime: kCMTimeZero)
         } else {
             let scaleFactor = CGAffineTransformMakeScale(scaleToFitRatio, scaleToFitRatio)
-            var concat = CGAffineTransformConcat(CGAffineTransformConcat(assetTrack.preferredTransform, scaleFactor), CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.width / 2))
+            var concat = CGAffineTransformConcat(CGAffineTransformConcat(assetTrack.preferredTransform, scaleFactor), CGAffineTransformMakeTranslation(0, (UIScreen.mainScreen().bounds.height - assetTrack.naturalSize.height*scaleToFitRatio)/2))
             if assetInfo.orientation == .Down {
                 let fixUpsideDown = CGAffineTransformMakeRotation(CGFloat(M_PI))
                 let windowBounds = UIScreen.mainScreen().bounds
